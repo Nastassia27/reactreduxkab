@@ -8,7 +8,8 @@ export default{
 };
 
 export const CollapsedMode = ()=> <UncontrolledOnOff onChange={x=>x}/>
-export const DefaultInputValue = ()=> <input defaultValue={'yo'} />
+export const BugMode = ()=> <div>Will fix later</div>
+/*export const DefaultInputValue = ()=> <input defaultValue={'yo'} />*/
 
 
 /*

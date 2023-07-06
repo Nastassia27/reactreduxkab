@@ -11,6 +11,10 @@ export type AccordionPropsType = {
      * Element collapse story if it's true and closes when false
      */
     value: boolean
+    /**
+     * This element change smth
+     * To findout what is changed, click Ctrl+Q
+     */
     onChange: (value:boolean )=>void
     items: ItemType[]
     onClick: (value:any)=> void
