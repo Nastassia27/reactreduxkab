@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import {Button} from "../../stories/Button";
 import {Rating, RatingValueType} from "./Rating";
 
 
