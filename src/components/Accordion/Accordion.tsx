@@ -50,8 +50,7 @@ function AccordionTitle(props: AccordionTitlePropsType) {
 
 type AccordionBodyPropsType = {
     items: ItemType[]
-    onClick: (value:any)=> void
-
+    onClick: (value:any) => void
 }
 function AccordionBody(props: AccordionBodyPropsType) {
     return (

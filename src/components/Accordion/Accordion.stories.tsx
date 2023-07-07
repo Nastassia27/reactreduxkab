@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Accordion, AccordionPropsType} from "./Accordion";
 import {Story} from "@storybook/react";
-import action from '@storybook/addon-actions'
+import {action} from '@storybook/addon-actions'
 
 
 export default{
@@ -9,6 +9,9 @@ export default{
     component: Accordion,
     tags: ['autodocs'],
 };
+
+const callback=action('accordion mode change event fired')
+const onClickCallback = action('some item was clicked')
 
 
 const Template: Story<AccordionPropsType> = (args)=><Accordion {...args}/>
@@ -18,14 +21,14 @@ export const MenuCollapsedMode2 = Template.bind({});
 MenuCollapsedMode2.args={
     titleValue:'Menu',
     value: true,
-    onChange: x=>x,
+    onChange: callback,
     items:[],
-    onClick:y=>y
+    onClick:onClickCallback
 
 }
 
 
-export const UncollapsedMode = ()=> <Accordion titleValue={'List'} onChange={x=>x} value={false} items={[{title:'nastya', value:1} ,{title:'vania', value:2}]} onClick={y=>y }/>
+export const UncollapsedMode = ()=> <Accordion titleValue={'List'} onChange={callback} value={false} items={[{title:'nastya', value:1} ,{title:'vania', value:2}]} onClick={onClickCallback}/>
 
 export const ModeChanging = ()=>{
     const [value, setValue]=useState<boolean>(true);
