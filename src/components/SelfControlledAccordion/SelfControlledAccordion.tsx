@@ -24,7 +24,7 @@ const reducer= (state: boolean, action: ActionType)=>{
 export function UncontrolledAccordion (props: UncontrolledAccordionPropsType) {
 
     //let [collapsed, setCollapsed] = useState(false)
-    let [collapsed, dispatch] = useReducer(reducer, false)
+    let [collapsed, dispatch] = useReducer(reducer, {collapsed: false})
 
 
 
