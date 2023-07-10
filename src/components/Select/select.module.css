@@ -2,12 +2,16 @@
     border: 1px solid black;
 
     display: inline-block;
-    min-width: 20px;
-    min-height: 40px ;
+    min-width: 40px;
+    min-height: 20px ;
 }
 
 .items{
     position: absolute;
     padding: 5px;
     border: 1px black solid;
+}
+.item.selected{
+    background-color: blue;
+    color: white;
 }

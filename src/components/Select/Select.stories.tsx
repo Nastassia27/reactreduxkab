@@ -40,7 +40,18 @@ export const FixedSelect = () => {
 export const WIthChoosingValue = () => {
     const [value, setValue] = useState('2')
     return(
-        <Select value={'0'} onChange={callback} items={[
+        <Select value={value} onChange={setValue} items={[
+            {title: 'nastya', value: '1'},
+            {title: 'vania', value: '2'},
+            {title: 'liza', value: '3'},
+        ]}
+        />)
+}
+
+export const WIthoutValue = () => {
+    const [value, setValue] = useState(undefined)
+    return(
+        <Select value={value} onChange={setValue} items={[
             {title: 'nastya', value: '1'},
             {title: 'vania', value: '2'},
             {title: 'liza', value: '3'},
