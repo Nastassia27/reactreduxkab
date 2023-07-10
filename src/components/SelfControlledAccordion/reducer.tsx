@@ -11,8 +11,10 @@ export const reducer= (state: StateType, action: ActionType): StateType=>{
     //debugger
     switch (action.type){
         case TOGGLE_CONSTANT:
-            state.collapsed= !state.collapsed
-            return state;
+            const stateCopy = {...state,collapsed: !state.collapsed}
+            //stateCopy.collapsed= !state.collapsed
+
+            return stateCopy;
         default:
             return state
     }
