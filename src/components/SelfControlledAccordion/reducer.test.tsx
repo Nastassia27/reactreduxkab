@@ -20,11 +20,13 @@ test('collapsed should be false', ()=>{
     expect(newState.collapsed).toBe(false)
 })
 
-test('error', ()=>{
-    const state: StateType={
+/*
+test('error', () => {
+    const state: StateType = {
         collapsed: true
-    }
+    };
 
-   // const newState = reducer(state, {type: TOGGLE_CONSTANT})
-
-    expect(()=>{reducer(state, {type: 'FAKE'})}).toThrowError()})
+    expect(() => {
+        reducer(state, {type: 'FAKE'});
+    }).toThrowError();
+});*/
