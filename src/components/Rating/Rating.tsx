@@ -6,7 +6,7 @@ type RatingPropsType = {
     value: RatingValueType
     onClick: (value: RatingValueType)=> void
 }
-export function Rating(props: RatingPropsType) {
+export const Rating= React.memo((props: RatingPropsType)=> {
     //debugger
 return(
     <div>
@@ -18,7 +18,7 @@ return(
     </div>
 )
 
-}
+})
 
 type StarPropsType ={
     selected: boolean
