@@ -1,4 +1,5 @@
-import {memo, useMemo, useState} from "react";
+import React, {memo, useMemo, useState} from "react";
+import {Select} from "../../components/Select/Select";
 
 export default {
     title: 'useMemo'
@@ -78,4 +79,22 @@ export const HelpsToReactMemo = () => {
         {counter}
         <Users users={newArray}/>
     </>
+}
+
+export const FirstSelectWithMemo = () => {
+    const [value, setValue] = useState('2')
+    const [items, setItems] = useState([
+        {title: 'nastya', value: '1'},
+        {title: 'vania', value: '2'},
+        {title: 'liza', value: '3'},
+    ])
+
+    const newSelect=useMemo(()=>{
+        console.log('newSelect')
+        const newValue = items.filter(u=>u.title.toLowerCase().indexOf('i')>-1)
+        return newValue
+    },[items])
+    return(
+        <Select value={value} onChange={setValue} items={newSelect}
+        />)
 }
