@@ -106,3 +106,26 @@ export const ClocksExample = () => {
     </>
 }
 
+export const ClocksWithDimychExample = () => {
+    //через секунду что-то обновить
+    console.log('ClocksExample')
+    //const initValue = useMemo(generateDate,[])
+    const [date, setDate] = useState(new Date());
+
+    const newDate = ()=>{
+        setDate(new Date())
+    }
+
+
+    useEffect(()=>{
+        const timerId = setInterval(newDate, 1000);
+        return function cleanup() {
+            clearInterval(timerId);
+        };
+    },[])
+
+    return <>
+        { date.toLocaleTimeString()}
+    </>
+}
+
