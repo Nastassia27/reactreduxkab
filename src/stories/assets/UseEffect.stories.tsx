@@ -87,19 +87,22 @@ export const ClocksExample = () => {
     //через секунду что-то обновить
     console.log('ClocksExample')
     //const initValue = useMemo(generateDate,[])
-    const [counter, setCounter] = useState(1);
-    const [fake, setFake] = useState(1);
+    const [date, setDate] = useState(new Date());
 
-    useEffect(()=>{
-        setInterval(()=>{
-            // debugger
-            console.log('TIck'+ counter)
-            setCounter((state: number)=>state+1)
+   const newDate = ()=>{
+       setDate(new Date())
+   }
 
-        }, 1000)},[])
+
+   useEffect(()=>{
+       const timerId = setInterval(newDate, 1000);
+       return function cleanup() {
+           clearInterval(timerId);
+       };
+   },[])
 
     return <>
-        Hello, counter: {counter}, fake:  {fake}
+        { date.toLocaleTimeString()}
     </>
 }
 
