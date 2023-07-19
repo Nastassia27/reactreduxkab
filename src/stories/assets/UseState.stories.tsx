@@ -11,7 +11,7 @@ function generateDate(){
 
 export const Example1 = () => {
     console.log('Example1')
-        //const initValue = useMemo(generateDate,[])
+    //const initValue = useMemo(generateDate,[])
     const [counter, setCounter] = useState(generateDate);
 
     const changer = (state: number)=> state +1
