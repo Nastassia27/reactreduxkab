@@ -55,3 +55,51 @@ export const SimpleExample = () => {
 
     </>
 }
+
+export const SetTimeoutExample = () => {
+    //через секунду что-то обновить
+    console.log('SetTimeoutExample')
+    //const initValue = useMemo(generateDate,[])
+    const [counter, setCounter] = useState(1);
+    const [fake, setFake] = useState(1);
+
+
+  /* useEffect(()=>{ setTimeout(()=>{
+       // debugger
+        console.log('SetTimeout')
+        document.title = counter.toString()
+    }, 1000)},[counter])*/
+
+    useEffect(()=>{
+        setInterval(()=>{
+        // debugger
+        console.log('TIck'+ counter)
+            setCounter((state: number)=>state+1)
+
+    }, 1000)},[])
+
+    return <>
+        Hello, counter: {counter}, fake:  {fake}
+    </>
+}
+
+export const ClocksExample = () => {
+    //через секунду что-то обновить
+    console.log('ClocksExample')
+    //const initValue = useMemo(generateDate,[])
+    const [counter, setCounter] = useState(1);
+    const [fake, setFake] = useState(1);
+
+    useEffect(()=>{
+        setInterval(()=>{
+            // debugger
+            console.log('TIck'+ counter)
+            setCounter((state: number)=>state+1)
+
+        }, 1000)},[])
+
+    return <>
+        Hello, counter: {counter}, fake:  {fake}
+    </>
+}
+
