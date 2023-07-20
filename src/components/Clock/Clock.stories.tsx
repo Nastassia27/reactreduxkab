@@ -12,6 +12,18 @@ export const ClocksWithDimychExample = () => {
 
 
     return <>
-       <Clock/>
+       <Clock mode={'digital'}/>
+    </>
+}
+
+
+export const AnalogCLockExample = () => {
+    //через секунду что-то обновить
+    console.log('ClocksExample')
+    //const initValue = useMemo(generateDate,[])
+
+
+    return <>
+        <Clock mode={'analog'}/>
     </>
 }
