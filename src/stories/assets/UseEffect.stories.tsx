@@ -1,4 +1,5 @@
 import {memo, useEffect, useMemo, useState} from "react";
+import {clearInterval} from "timers";
 
 export default {
     title: 'useEffect demo'
@@ -25,7 +26,9 @@ export const SimpleExample = () => {
     },[counter])//если не передать зависимость то срабатывает каждый раз при отрисовке
         //если зависимость есть  - то срабатывает первые раз а потом нет
     //если пустой массив то сработает один раз при монтировании компоненты
-
+//компонента умирает когда мы из нее выходим
+// или перед выховом очередным этого эффекта
+    // when use clearInterval function
     useEffect(()=>{
         console.log('useEffect every render')
         document.title = counter.toString()
@@ -71,12 +74,16 @@ export const SetTimeoutExample = () => {
     }, 1000)},[counter])*/
 
     useEffect(()=>{
-        setInterval(()=>{
+        let newEl=setInterval(()=>{
         // debugger
         console.log('TIck'+ counter)
             setCounter((state: number)=>state+1)
 
-    }, 1000)},[])
+    }, 1000)
+    return ()=>{
+            clearInterval(newEl)
+    }
+    },[])
 
     return <>
         Hello, counter: {counter}, fake:  {fake}
@@ -126,6 +133,54 @@ export const ClocksWithDimychExample = () => {
 
     return <>
         { date.toLocaleTimeString()}
+    </>
+}
+
+export const ResetEffectExample = () => {
+    //через секунду что-то обновить
+    console.log('Component rendered')
+    //const initValue = useMemo(generateDate,[])
+    const [counter, setCounter] = useState(1);
+
+
+    useEffect(() => {
+        console.log('Effect occured' + counter)
+        return ()=>{
+            console.log('reset effect')
+        }
+    }, [counter])
+
+    const increase = ()=>{setCounter(counter+1)}
+
+    return <>
+        Hello, counter: {counter} <button onClick={increase}>+</button>
+    </>
+}
+
+export const OnCaseTrackerExample = () => {
+
+    const [text, setText] = useState('');
+
+    console.log('Component rendered with ' + text)
+
+    useEffect(() => {
+        const handler = (e:KeyboardEvent )=>{
+            console.log(e.key);
+            setText(text + e.key)
+        }
+
+
+
+        window.document.addEventListener('keypress', handler)
+        return ()=>{
+            window.document.removeEventListener('keypress', handler)
+        }
+    }, [text])
+
+
+    return <>
+        Hello, text: {text}
+
     </>
 }
 
